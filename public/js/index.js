@@ -6,14 +6,7 @@ function getEmpData() {
       return response.json();
     })
     .then(function(data) {
-      console.log(data);
-      // var result = data.file;
-      // var image = document.createElement("img");
-      // var imageParent = document.getElementById("result");
-      // image.id = "id";
-      // image.className = "img-thumbnail";
-      // image.src = result;
-      // imageParent.appendChild(image);
+      return data;
     });
 }
 

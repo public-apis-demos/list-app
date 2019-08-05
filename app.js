@@ -5,6 +5,7 @@ const empRotues = require("./routes");
 const userService = require("./services/UserService");
 
 const app = express();
+const hostname = "127.0.0.1";
 const port = 3000;
 
 // Handlebars Middleware
@@ -37,4 +38,6 @@ app.get("/", async (req, res) => {
 // set api emplye
 app.use("/api", empRotues);
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () =>
+  console.log(`Server running at http://${hostname}:${port}/`)
+);
