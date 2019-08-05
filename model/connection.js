@@ -1,8 +1,9 @@
 const Sequelize = require("sequelize");
+const { database, user, password, host, dialect } = require("../config");
 
-const sequelize = new Sequelize("emp", "sa", "Password@123", {
-  host: "localhost",
-  dialect: "mssql"
+const sequelize = new Sequelize(database, user, password, {
+  host,
+  dialect
 });
 
 module.exports = sequelize;

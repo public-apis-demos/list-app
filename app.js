@@ -30,7 +30,7 @@ sequelize
 // set index.html
 
 app.get("/", async (req, res) => {
-  let data = await userService.getAllUser();
+  let data = await userService.getUsers();
   res.render("index", { data: data });
 });
 
