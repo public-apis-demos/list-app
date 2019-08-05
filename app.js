@@ -1,7 +1,8 @@
 const express = require("express");
-const Sequelize = require("sequelize");
+const sequelize = require("./model/connection");
 const exphbs = require("express-handlebars");
 const empRotues = require("./routes");
+const userService = require("./services/UserService");
 
 const app = express();
 const port = 3000;
@@ -14,11 +15,8 @@ app.set("view engine", "handlebars");
 // Set Static Folder
 app.use(express.static(`${__dirname}/public`));
 
-// database connction
-const sequelize = new Sequelize("emp", "sa", "Password@123", {
-  host: "localhost",
-  dialect: "mssql"
-});
+//sequelize.mode
+
 // connction of db
 sequelize
   .authenticate()
@@ -31,8 +29,9 @@ sequelize
 
 // set index.html
 
-app.get("/", (req, res) => {
-  res.render("index");
+app.get("/", async (req, res) => {
+  let data = await userService.getAllUser();
+  res.render("index", { data: data });
 });
 
 // set api emplye
